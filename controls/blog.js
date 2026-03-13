@@ -1,5 +1,5 @@
 import { Blog } from "../Models/bolg.js";
-
+import { User } from "../Models/user.js";
 export const createblog = async (req, res) => {
   const { title, description, imageurl } = req.body;
 
@@ -68,5 +68,57 @@ export const deleteblog = async (req, res) => {
   res.json({
     success: true,
     message: "blog deleted",
+  });
+};
+
+export const getallblog = async (req, res) => {
+  const blogs = await Blog.find();
+
+  if (!blogs)
+    return res.json({
+      success: false,
+      message: "there is no blog",
+    });
+
+  res.json({
+    success: true,
+    message: "all blogs",
+    blogs,
+  });
+};
+
+export const getblogbyid = async (req, res) => {
+  const id = req.params.id;
+
+  const blog = await Blog.findById(id);
+
+  if (!blog)
+    return res.json({
+      success: false,
+      message: "invalid id",
+    });
+
+  res.json({
+    success: true,
+    message: "your blogs",
+    blog,
+  });
+};
+
+export const getuserbyid = async (req, res) => {
+  const id = req.params.id;
+
+  const user = await User.findById(id);
+
+  if (!user)
+    return res.json({
+      success: false,
+      message: "invalid id",
+    });
+
+  res.json({
+    success: true,
+    message: "this is single user",
+    user,
   });
 };
