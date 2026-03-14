@@ -6,6 +6,7 @@ import {
   updateblog,
   getallblog,
   getblogbyid,
+  getuserbyid,
 } from "../controls/blog.js";
 import { isauthencat } from "../middlewares/auth.js";
 const router = express.Router();
@@ -16,5 +17,6 @@ router.put("/:id", isauthencat, updateblog);
 router.delete("/:id", isauthencat, deleteblog);
 router.get("/allblogs", getallblog);
 router.get("/blog/:id", isauthencat, getblogbyid);
+router.get("/:id", getuserbyid);
 
 export default router;
