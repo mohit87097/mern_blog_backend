@@ -19,10 +19,13 @@ app.use(cookieParser());
 
 app.use("/api/user", userrouter);
 app.use("/api/blog", blogroutr);
+
+import cors from "cors";
+
 app.use(
   cors({
-    origin: [process.env.FRANTED_ULR],
-    methods: ["GET", "PUT", "POST", "DELETE"],
+    origin: "http://localhost:5173",
+    methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   }),
 );
