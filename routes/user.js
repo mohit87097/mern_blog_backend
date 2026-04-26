@@ -4,6 +4,7 @@ import {
   userlogin,
   getmyprofile,
   userlogout,
+  getUserById,
 } from "../controls/user.js";
 import { isauthencat } from "../middlewares/auth.js";
 const router = express.Router();
